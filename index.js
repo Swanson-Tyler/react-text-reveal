@@ -1,7 +1,6 @@
-'use strict';
+import Reveal from './src/components/Reveal';
+import WordReveal from './src/components/WordReveal';
+import MultilineReveal from './src/components/MultilineReveal';
+import CharacterReveal from './src/components/CharacterReveal';
 
-if (process.env.NODE_ENV === 'production') {
-    module.exports = require('./dist/react-text-reveal.min.js');  
-} else {
-    module.exports = require('./dist/react-text-reveal.development.js');
-}
+export { Reveal, WordReveal, MultilineReveal, CharacterReveal };

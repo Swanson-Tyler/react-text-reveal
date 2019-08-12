@@ -1,32 +1,8 @@
-import * as React from "react";
-import TransitionBlock from "./TransitionBlock";
+import * as React from 'react';
+import TransitionBlock from '../TransitionBlock';
 
 export default class CharacterReveal extends React.Component {
-  static defaultProps = {
-    delay: 0,
-    ease: "cubic-bezier(0.666, 0.000, 0.237, 1.000)",
-    offset: `45px`,
-    duration: 1275,
-    animateOpacity: true,
-    opacityDelay: 0,
-    direction: "bottom",
-    reveal: "character",
-    multilineOffsetDelay: 200, // ms
-    multilineMasking: true,
-    wordOffsetDelay: 200, // ms
-    characterOffsetDelay: 25, // ms
-    characterWordSpacing: `.15em`,
-    triggerOnce: true,
-    perspective: false,
-    perspectiveX: 100,
-    perspectiveY: 100,
-    perspectiveZ: 1
-  };
-
-  constructor(props) {
-    super(props);
-    this.state = { lines: [] };
-  }
+  state = { lines: [] };
 
   componentDidMount() {
     this.generateCharacters();
@@ -35,11 +11,11 @@ export default class CharacterReveal extends React.Component {
   generateCharacters = () => {
     const { copy } = this.props;
     const wordLines = [...copy].map(line => {
-      return line.split(" "); // separate by word
+      return line.split(' '); // separate by word
     });
 
     const characterLines = wordLines.map(word => {
-      return word.map(w => w.split("")); // separate by character
+      return word.map(w => w.split('')); // separate by character
     });
 
     this.setState({ lines: characterLines });
@@ -47,52 +23,57 @@ export default class CharacterReveal extends React.Component {
 
   render() {
     const {
-      direction,
-      multilineOffsetDelay,
-      characterOffsetDelay,
       animateOpacity,
-      duration,
-      offset,
-      ease,
       canPlay,
-      triggerOnce,
+      characterOffsetDelay,
+      characterWordSpacing,
+      className,
       delay,
+      duration,
+      ease,
+      from,
+      multilineOffsetDelay,
+      multilineMasking,
+      offset,
+      perspective,
+      perspectiveFOV,
       perspectiveX,
       perspectiveY,
-      perspectiveZ,
-      perspective
+      perspectiveZ
     } = this.props;
+
     const { lines } = this.state;
 
     return (
-      <React.Fragment>
+      <div
+        className={className}
+        style={{ perspective: perspective && perspectiveFOV ? `${perspectiveFOV}px` : 'unset' }}
+      >
         {lines.map((line, i) => {
           // We must keep track of what character we are on for animation purposes
           let characterCount = 0;
           return (
-            <LineWrapper key={i} {...this.props}>
+            <LineWrapper key={i} multilineMasking={multilineMasking}>
               {line.map((word, j) => {
-                characterCount = characterCount + word.length;
+                characterCount += word.length;
 
                 return (
-                  <WordWrapper key={j} {...this.props}>
+                  <WordWrapper key={j} characterWordSpacing={characterWordSpacing}>
                     {word.map((character, k, wordArray) => {
                       return (
-                        <CharacterWrapper key={k} {...this.props}>
+                        <CharacterWrapper key={k}>
                           <TransitionBlock
-                            triggerOnce={triggerOnce}
-                            from={direction}
+                            animateOpacity={animateOpacity}
+                            ease={ease}
+                            canPlay={canPlay}
                             delay={
                               delay +
                               i * multilineOffsetDelay +
-                              (characterCount - wordArray.length + k) *
-                                characterOffsetDelay
+                              (characterCount - wordArray.length + k) * characterOffsetDelay
                             }
-                            animateOpacity={animateOpacity}
                             duration={duration}
+                            from={from}
                             offset={offset}
-                            ease={ease}
-                            canPlay={canPlay}
                             perspective={perspective}
                             perspectiveX={perspectiveX}
                             perspectiveY={perspectiveY}
@@ -109,50 +90,70 @@ export default class CharacterReveal extends React.Component {
             </LineWrapper>
           );
         })}
-      </React.Fragment>
+      </div>
     );
   }
 }
 
+CharacterReveal.defaultProps = {
+  animateOpacity: true,
+  characterOffsetDelay: 25,
+  characterWordSpacing: `.15em`,
+  className: '',
+  delay: 0,
+  duration: 1275,
+  ease: 'cubic-bezier(0.666, 0.0, 0.237, 1.0)',
+  from: 'bottom',
+  multilineMasking: false,
+  multilineOffsetDelay: 200,
+  offset: `45px`,
+  opacityDelay: 0,
+  perspective: false,
+  perspectiveFOV: 1000,
+  perspectiveX: 0,
+  perspectiveY: 0,
+  perspectiveZ: 0
+};
+
 const LineWrapper = props => {
-  const { multilineMasking } = props;
+  const { multilineMasking, children } = props;
 
   return (
     <div
       style={{
-        display: "block",
-        overflow: `${multilineMasking ? "hidden" : "visible"}`
+        display: 'block',
+        overflow: `${multilineMasking ? 'hidden' : 'visible'}`
       }}
     >
-      {props.children}
+      {children}
     </div>
   );
 };
 
 const WordWrapper = props => {
-  const { characterWordSpacing } = props;
+  const { characterWordSpacing, children } = props;
 
   return (
     <div
       style={{
-        display: "inline-block",
+        display: 'inline-block',
         marginRight: characterWordSpacing
       }}
     >
-      {props.children}
+      {children}
     </div>
   );
 };
 
-const CharacterWrapper = props => {
+const CharacterWrapper = ({ children }) => {
   return (
     <div
       style={{
-        display: "inline-block",
-        width: "auto"
+        display: 'inline-block',
+        width: 'auto'
       }}
     >
-      {props.children}
+      {children}
     </div>
   );
 };

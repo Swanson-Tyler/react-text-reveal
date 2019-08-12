@@ -9,16 +9,18 @@
     "plugins": ["prettier"],
     "rules": {
       "no-param-reassign": 1,
+      "no-nested-ternary": 0,
       "no-unused-vars": ["error", { "caughtErrorsIgnorePattern": "^reject" }],
       "import/no-extraneous-dependencies": 1,
       "prettier/prettier": ["error"],
       "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-      "react/no-array-index-key": "ignore",
-      "react/prop-types": "ignore",
+      "react/no-array-index-key": 0,
+      "react/prop-types": 0,
       "import/no-unresolved": [2, { "ignore": ["components", "shared"] }],
-      "jsx-a11y/media-has-caption": "ignore",
-      "jsx-a11y/no-noninteractive-element-interactions": "ignore",
-      "jsx-a11y/click-events-have-key-events": "ignore"
+      "jsx-a11y/media-has-caption": 0,
+      "jsx-a11y/no-noninteractive-element-interactions": 0,
+      "jsx-a11y/click-events-have-key-events": 0,
+      "jsx-a11y/mouse-events-have-key-events": 0
     }
   }
   

@@ -1,40 +1,21 @@
-// @flow
-import * as React from "react";
+import * as React from 'react';
 
 export default class TransitionBlock extends React.Component {
-  static defaultProps = {
-    canPlay: true,
-    from: "bottom",
-    delay: 0,
-    ease: "ease-out",
-    duration: 1250,
-    offset: "100px",
-    animateOpacity: true,
-    triggerOnce: true,
-    threshold: 0,
-    display: "inline-block",
-    opacityDelay: 0,
-    perspective: false,
-    perspectiveX: 100,
-    perspectiveY: 100,
-    perspectiveZ: 1
-  };
-
   getOpacity = () => {
     const { animateOpacity, canPlay } = this.props;
 
     if (canPlay || !animateOpacity) {
-      return "1";
+      return '1';
     }
 
-    return "0";
+    return '0';
   };
 
   getTransform = () => {
     const {
-      offset,
-      from,
       canPlay,
+      from,
+      offset,
       perspective,
       perspectiveX,
       perspectiveY,
@@ -44,19 +25,19 @@ export default class TransitionBlock extends React.Component {
     let transform;
 
     if (canPlay) {
-      transform = "translate3d(0,0,0) rotateX(0) rotateY(0) scale(1)";
+      transform = 'translate3d(0,0,0) rotateX(0deg) rotateY(0deg) rotateZ(0deg)';
     } else {
       switch (from) {
-        case "top":
+        case 'top':
           transform = `translate3d(0,-${offset},0)`;
           break;
-        case "bottom":
+        case 'bottom':
           transform = `translate3d(0,${offset},0)`;
           break;
-        case "left":
+        case 'left':
           transform = `translate3d(-${offset},0,0)`;
           break;
-        case "right":
+        case 'right':
           transform = `translate3d(${offset},0,0)`;
           break;
         default:
@@ -65,7 +46,7 @@ export default class TransitionBlock extends React.Component {
       }
       // set perspective CSS 3d
       if (perspective) {
-        transform = `${transform} rotateX(${perspectiveX}deg) rotateY(${perspectiveY}deg) scale(${perspectiveZ})`;
+        transform = `${transform} rotateX(${perspectiveX}deg) rotateY(${perspectiveY}deg) rotateZ(${perspectiveZ}deg)`;
       }
     }
 
@@ -74,13 +55,12 @@ export default class TransitionBlock extends React.Component {
 
   getTransition = () => {
     const { delay, duration, ease, opacityDelay, canPlay } = this.props;
+
     if (canPlay) {
-      return `opacity ${duration}ms ease ${
-        opacityDelay ? opacityDelay : delay
-      }ms, transform ${duration}ms ${ease} ${delay}ms`;
-    } else {
-      return `opacity 0ms ease 0ms, transform 0ms ease 0ms`;
+      return `opacity ${duration}ms ease ${opacityDelay ||
+        delay}ms, transform ${duration}ms ${ease} ${delay}ms`;
     }
+    return `opacity 0ms ease 0ms, transform 0ms ease 0ms`;
   };
 
   getStyles = () => {
@@ -94,7 +74,7 @@ export default class TransitionBlock extends React.Component {
       opacity,
       transform,
       transition,
-      width: "100%"
+      width: '100%'
     };
   };
 
@@ -113,3 +93,19 @@ export default class TransitionBlock extends React.Component {
     );
   }
 }
+
+TransitionBlock.defaultProps = {
+  animateOpacity: true,
+  canPlay: false,
+  delay: 0,
+  display: 'inline-block',
+  duration: 1250,
+  ease: 'ease-out',
+  from: 'bottom',
+  offset: '100px',
+  opacityDelay: 0,
+  perspective: false,
+  perspectiveX: 0,
+  perspectiveY: 0,
+  perspectiveZ: 0
+};

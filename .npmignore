@@ -1,0 +1,14 @@
+.babelrc
+.prettierrc
+.editorconfig
+.eslintrc.json
+.nvmrc
+*.yml
+CHANGELOG.md
+CONTRIBUTING.md
+test/
+node_modules
+.cache
+src
+build.js
+package-lock.json
