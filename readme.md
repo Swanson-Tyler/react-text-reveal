@@ -97,22 +97,25 @@ These props can be used on all 4 component exports. (`<Reveal />`, `<WordReveal/
 - **className** *(string)*  
   This prop allows you to append your own custom className to the outer div of the component.
 
-- **ease** *(string)*  
+- **canPlay** *(boolean)*  [default: false]
+  This prop allows you to append your own custom className to the outer div of the component.
+
+- **ease** *(string)*  [default: 'ease-out']
   This prop allows you to control the transition-timing-function of your animation.
 
-- **from** *(string)*  
+- **from** *(string)*  [default: 'bottom']
   This prop allows you to control which direction your animation starts from.
 
-- **duration** *(float)*
+- **duration** *(float)*  [default: 1275]
   This prop allows you to control the transition-duration of you animation in ms.
 
-- **offset** *(float)*  
-  The distance (in px) your animation travels.
+- **offset** *(string)*  [default: '45px']
+  The distance your animation travels. Set as as string so you can use vw, vh, em , rem, etc.
 
-- **opacityDelay** *(float)*  
+- **opacityDelay** *(float)*  [default: 0]
   The amount of delay in ms for the 'opacity' property.
 
-- **perspective** *(boolean)*  
+- **perspective** *(boolean)*  [default: false]
   Whether your animation uses CSS 3D perspective.
 
 - **perspectiveFOV** *(integer)*  [default: 1000]

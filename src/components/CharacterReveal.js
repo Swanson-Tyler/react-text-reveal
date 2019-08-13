@@ -102,7 +102,7 @@ CharacterReveal.defaultProps = {
   className: '',
   delay: 0,
   duration: 1275,
-  ease: 'cubic-bezier(0.666, 0.0, 0.237, 1.0)',
+  ease: 'ease-out',
   from: 'bottom',
   multilineMasking: false,
   multilineOffsetDelay: 200,

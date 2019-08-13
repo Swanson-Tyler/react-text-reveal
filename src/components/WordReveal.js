@@ -86,7 +86,7 @@ WordReveal.defaultProps = {
   delay: 0,
   from: 'bottom',
   duration: 1275,
-  ease: 'cubic-bezier(0.666, 0.0, 0.237, 1.0)',
+  ease: 'ease',
   multilineMasking: false,
   multilineOffsetDelay: 200,
   offset: `45px`,

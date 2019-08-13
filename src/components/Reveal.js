@@ -55,7 +55,7 @@ Reveal.defaultProps = {
   className: '',
   delay: 0,
   duration: 1275,
-  ease: [0.666, 0.0, 0.237, 1.0],
+  ease: 'ease-out',
   from: 'bottom',
   offset: `45px`,
   opacityDelay: 0,
