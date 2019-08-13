@@ -1,5 +1,5 @@
 
-### Demo/Tutorial available here: <a href="#">https://swanson-tyler.github.io/motionlab/</a>
+### Create/Export your custom reveal here: <a href="#">https://swanson-tyler.github.io/motionlab/</a>
 
 Features 🎉
 ---------------
