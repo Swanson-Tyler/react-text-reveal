@@ -5,6 +5,7 @@ Features 🎉
 ---------------
 
 * **Simple** – Uses basic CSS transition animations.
+* **Flexible** – Not dependent on Intersection Observer API. Trigger the animation whenever you want.
 * **Advanced Control** – Customize every aspect of the reveal to match any design.
 
 Getting Started
@@ -19,27 +20,70 @@ Getting Started
 2. Use:
 
 ```jsx
-<Reveal>WELCOME!</Reveal>
+<Reveal
+    canPlay={true}
+    ease={"cubic-bezier(0,0.4,0.4,1)"}
+>
+    WELCOME!
+</Reveal>
 ```
 
 ```jsx
+
 <WordReveal
-    copy={['Word Reveal']}
+    animateOpacity={true}
     canPlay={true}
+    copy={["Make.","Something.","Move."]}
+    direction={"bottom"}
+    duration={2500}
+    ease={"cubic-bezier(0,0.4,0.4,1)"}
+    offset={"225px"}
+    perspective={true}
+    perspectiveFOV={1000}
+    perspectiveX={158}
+    perspectiveY={13}
+    perspectiveZ={0}
+    wordOffsetDelay={200}
 />
 ```
 
 ```jsx
 <MultilineReveal
-    copy={['Multiline', 'Reveal']}
+    animateOpacity={true}
     canPlay={true}
+    copy={["Make.","Something.","Move."]}
+    direction={"top"}
+    duration={1275}
+    ease={"cubic-bezier(0,0.4,0.4,1)"}
+    offset={"45px"}
+    multilineMasking={true}
+    multilineOffsetDelay={200}
+    perspective={true}
+    perspectiveFOV={1000}
+    perspectiveX={0}
+    perspectiveY={13}
+    perspectiveZ={0}
 />
 ```
 
 ```jsx
 <CharacterReveal
-    copy={['Character', 'Reveal']}
+    animateOpacity={true}
     canPlay={true}
+    characterOffsetDelay={95}
+    characterWordSpacing={10}
+    copy={["Make.","Something.","Move."]}
+    direction={"bottom"}
+    duration={1875}
+    ease={"cubic-bezier(0,0.4,0.4,1)"}
+    offset={'120px'}
+    perspective={true}
+    perspectiveX={158}
+    perspectiveY={13}
+    perspectiveZ={0}
+    perspectiveFOV={1000}
+    multilineMasking={false}
+    multilineOffsetDelay={575}
 />
 ```
 
@@ -48,7 +92,7 @@ API
 
 ## Basic Properties
 
-These props can be used on all 4 component exports. (<Reveal />, <WordReveal/>, <MultilineReveal />, <CharacterReveal />)
+These props can be used on all 4 component exports. (`<Reveal />`, `<WordReveal/>`, `<MultilineReveal />`, `<CharacterReveal />`)
 
 - **className** *(string)*  
   This prop allows you to append your own custom className to the outer div of the component.
@@ -85,16 +129,16 @@ These props can be used on all 4 component exports. (<Reveal />, <WordReveal/>, 
 
 ## <Reveal /> Specific Properties
 
-These props can be used for the <WordReveal /> component.
+These props can be used for the `<Reveal />` component.
 
 - **copy** *(children)*  
   This can be any valid jsx.
 
 ## <WordReveal /> Specific Properties
 
-These props can be used for the <WordReveal /> component.
+These props can be used for the `<WordReveal />` component.
 
-- **copy** *(array<string>)*  
+- **copy** *(array`<string>`)*  
   The copy to be animated. Separate array values represent new lines (\n).
 
 - **multilineMasking** *(boolean)* [default: false]
@@ -109,9 +153,9 @@ These props can be used for the <WordReveal /> component.
 
 ## <MultilineReveal /> Specific Properties
 
-These props can be used for the <MultilineReveal /> component.
+These props can be used for the `<MultilineReveal />` component.
 
-- **copy** *(array<string>)*  
+- **copy** *(array`<string>`)*  
   The copy to be animated. Separate array values represent new lines (\n).
 
 - **multilineMasking** *(boolean)* [default: false]
@@ -123,9 +167,9 @@ These props can be used for the <MultilineReveal /> component.
 
 ## <CharacterReveal /> Specific Properties
 
-These props can be used for the <CharacterReveal /> component.
+These props can be used for the `<CharacterReveal />` component.
 
-- **copy** *(array<string>)*  
+- **copy** *(array`<string>`)*  
   The copy to be animated. Separate array values represent new lines (\n).
 
 - **multilineMasking** *(boolean)* [default: false]  
