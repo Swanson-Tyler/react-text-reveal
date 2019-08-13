@@ -130,14 +130,14 @@ These props can be used on all 4 component exports. (`<Reveal />`, `<WordReveal/
 - **perspectiveZ** *(integer)*  [default: 0]
   This prop sets the rotateZ() property of your animation. (This requires the 'perspective' prop be set to 'true')
 
-## <Reveal /> Specific Properties
+## `<Reveal />` Specific Properties
 
 These props can be used for the `<Reveal />` component.
 
 - **copy** *(children)*  
   This can be any valid jsx.
 
-## <WordReveal /> Specific Properties
+## `<WordReveal />` Specific Properties
 
 These props can be used for the `<WordReveal />` component.
 
@@ -154,7 +154,7 @@ These props can be used for the `<WordReveal />` component.
   The time delay (in ms) between each separate word of your animation.
 
 
-## <MultilineReveal /> Specific Properties
+## `<MultilineReveal />` Specific Properties
 
 These props can be used for the `<MultilineReveal />` component.
 
@@ -168,7 +168,7 @@ These props can be used for the `<MultilineReveal />` component.
   The time delay (in ms) between each separate line of your animation.
 
 
-## <CharacterReveal /> Specific Properties
+## `<CharacterReveal />` Specific Properties
 
 These props can be used for the `<CharacterReveal />` component.
 
