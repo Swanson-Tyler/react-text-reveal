@@ -184,7 +184,7 @@ These props can be used for the `<CharacterReveal />` component.
 - **characterOffsetDelay** *(integer)* [default: 25]  
   The time delay (in ms) between each separate character of your animation.
 
- **characterWordSpacing** *(string)* [default: '.15em']  
+- **characterWordSpacing** *(string)* [default: '.15em']  
   The space between the words of each line. (Normal css text styling doesn't work properly, so spacing must be added manually.)
 
 
