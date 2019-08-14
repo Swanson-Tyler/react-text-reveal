@@ -1,5 +1,5 @@
 
-### Create/Export your custom reveal here: <a href="#">https://swanson-tyler.github.io/motionlab/</a>
+### Create/Export your custom reveal here: <a href="https://swanson-tyler.github.io/motionlab/">Motionlab</a>
 
 Features 🎉
 ---------------
@@ -55,9 +55,9 @@ Getting Started
     direction={"top"}
     duration={1275}
     ease={"cubic-bezier(0,0.4,0.4,1)"}
-    offset={"45px"}
     multilineMasking={true}
     multilineOffsetDelay={200}
+    offset={"45px"}
     perspective={true}
     perspectiveFOV={1000}
     perspectiveX={0}
@@ -76,14 +76,14 @@ Getting Started
     direction={"bottom"}
     duration={1875}
     ease={"cubic-bezier(0,0.4,0.4,1)"}
+    multilineMasking={false}
+    multilineOffsetDelay={575}
     offset={'120px'}
     perspective={true}
     perspectiveX={158}
     perspectiveY={13}
     perspectiveZ={0}
     perspectiveFOV={1000}
-    multilineMasking={false}
-    multilineOffsetDelay={575}
 />
 ```
 
@@ -98,7 +98,7 @@ These props can be used on all 4 component exports. (`<Reveal />`, `<WordReveal/
   This prop allows you to append your own custom className to the outer div of the component.
 
 - **canPlay** *(boolean)*  [default: false]
-  This prop allows you to append your own custom className to the outer div of the component.
+  This prop starts your animation. You must start with this prop set to false.
 
 - **ease** *(string)*  [default: 'ease-out']
   This prop allows you to control the transition-timing-function of your animation.
