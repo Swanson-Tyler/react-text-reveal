@@ -2,6 +2,17 @@ import React from 'react';
 import TransitionBlock from '../TransitionBlock';
 
 export default class Reveal extends React.PureComponent {
+  componentDidMount() {
+    this.onLoad();
+  }
+
+  onLoad = () => {
+    const { onLoad } = this.props;
+    if (onLoad) {
+      onLoad();
+    }
+  };
+
   render() {
     const {
       animateOpacity,
@@ -65,5 +76,6 @@ Reveal.defaultProps = {
   perspectiveFOV: 1000,
   perspectiveX: 0,
   perspectiveY: 0,
-  perspectiveZ: 0
+  perspectiveZ: 0,
+  onLoad: undefined
 };

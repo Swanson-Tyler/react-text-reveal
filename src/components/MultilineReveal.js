@@ -6,7 +6,15 @@ export default class MultiLineReveal extends React.PureComponent {
 
   componentDidMount() {
     this.generateLines();
+    this.onLoad();
   }
+
+  onLoad = () => {
+    const { onLoad } = this.props;
+    if (onLoad) {
+      onLoad();
+    }
+  };
 
   generateLines = () => {
     const { copy } = this.props;
@@ -82,5 +90,6 @@ MultiLineReveal.defaultProps = {
   perspectiveFOV: 1000,
   perspectiveX: 0,
   perspectiveY: 0,
-  perspectiveZ: 0
+  perspectiveZ: 0,
+  onLoad: undefined
 };
