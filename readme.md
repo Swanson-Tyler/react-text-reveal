@@ -130,6 +130,9 @@ These props can be used on all 4 component exports. (`<Reveal />`, `<WordReveal/
 - **perspectiveZ** *(integer)*  [default: 0]
   This prop sets the rotateZ() property of your animation. (This requires the 'perspective' prop be set to 'true')
 
+- **onLoad** *(func)*  [default: undefined]
+  callback function called after reveal component mounts.
+
 ## `<Reveal />` Specific Properties
 
 These props can be used for the `<Reveal />` component.
