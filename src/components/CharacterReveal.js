@@ -6,7 +6,15 @@ export default class CharacterReveal extends React.Component {
 
   componentDidMount() {
     this.generateCharacters();
+    this.onLoad();
   }
+
+  onLoad = () => {
+    const { onLoad } = this.props;
+    if (onLoad) {
+      onLoad();
+    }
+  };
 
   generateCharacters = () => {
     const { copy } = this.props;
@@ -112,7 +120,8 @@ CharacterReveal.defaultProps = {
   perspectiveFOV: 1000,
   perspectiveX: 0,
   perspectiveY: 0,
-  perspectiveZ: 0
+  perspectiveZ: 0,
+  onLoad: undefined
 };
 
 const LineWrapper = props => {

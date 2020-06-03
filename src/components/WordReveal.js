@@ -6,7 +6,15 @@ export default class WordReveal extends React.PureComponent {
 
   componentDidMount() {
     this.generateWords();
+    this.onLoad();
   }
+
+  onLoad = () => {
+    const { onLoad } = this.props;
+    if (onLoad) {
+      onLoad();
+    }
+  };
 
   generateWords = () => {
     const { copy } = this.props;
@@ -96,7 +104,8 @@ WordReveal.defaultProps = {
   perspectiveX: 0,
   perspectiveY: 0,
   perspectiveZ: 0,
-  wordOffsetDelay: 200 // ms
+  wordOffsetDelay: 200, // ms
+  onLoad: undefined
 };
 
 const LineWrapper = props => {
